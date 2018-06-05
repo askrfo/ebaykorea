@@ -23,7 +23,7 @@ public class BoardApiController {
     List<Board> getBoards() {
 //        List<Board> list =  boardService.getBoards();
         List<Board> list =
-                boardService.getBoards("subject", "1");
+                boardService.getBoards("subject", "게시");
         return list;
     }
 }

@@ -47,7 +47,7 @@ public class BoardServiceImpl  implements BoardService {
     @Transactional(readOnly = true)
     public List<Board> getBoards(String searchType, String searchStr) {
 //        return boardRepository.searchBoards(searchType, searchStr);
-        Pageable pageable = PageRequest.of(0, 2);
+        Pageable pageable = PageRequest.of(2, 2);
         return boardRepository.searchBoards(searchType, searchStr, pageable);
     }
 

@@ -4,10 +4,10 @@ spring:
       ddl-auto: create-drop
     show-sql: true
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/helloboard?useUnicode=true&charaterEncoding=utf-8
-    username: fastcamp
-    password: fastcamp
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password: sa
     initialization-mode: always
   h2:
     console:

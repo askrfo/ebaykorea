@@ -16,7 +16,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
 import java.util.List;
 
-public class BoardRepositoryImpl extends QuerydslRepositorySupport implements BoardRepositoryCustom{
+public class BoardRepositoryImpl
+        extends QuerydslRepositorySupport
+        implements BoardRepositoryCustom{
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -58,12 +60,23 @@ public class BoardRepositoryImpl extends QuerydslRepositorySupport implements Bo
 
         // select b from Board b
 //        JPQLQuery query = from(qBoard);
-        // board, label을 한번의 쿼리로 가지고 오는데 iamge는 N+1로 실행
-//        JPQLQuery query = from(qBoard).leftJoin(qBoard.labels, qLabel).fetchJoin();
-        // board, image를 한번의 쿼리로 가지고 오는데 image가 2배로 가지고 오고,여전히 label이 N+1로 실행
-//        JPQLQuery query = from(qBoard).leftJoin(qBoard.labels, qLabel).leftJoin(qBoard.images, qImage).fetchJoin();
-        // MultipleBagFetchException, Entity와 Entity의 관계가 List로 되어 있을 경
-        JPQLQuery query = from(qBoard).leftJoin(qBoard.labels, qLabel).fetchJoin().leftJoin(qBoard.images, qImage).fetchJoin();
+        // Board, Label 을 패치조인.
+//        JPQLQuery query = from(qBoard)
+//                .leftJoin(qBoard.labels, qLabel).fetchJoin();
+
+        // image가 중복되서나온다. board는 N+1
+//        JPQLQuery query = from(qBoard)
+//                .leftJoin(qBoard.labels, qLabel)
+//                .leftJoin(qBoard.images, qImage)
+//                .fetchJoin();
+
+        // MultipleBagFetchException
+        JPQLQuery query = from(qBoard)
+                .distinct()
+                .leftJoin(qBoard.labels, qLabel)
+                .fetchJoin()
+                .leftJoin(qBoard.images, qImage)
+                .fetchJoin();
 
         // where 절 조건
         if("subject".equals(searchType)) {
@@ -71,12 +84,13 @@ public class BoardRepositoryImpl extends QuerydslRepositorySupport implements Bo
         }else{
             query.where(qBoard.content.like("%" + searchStr + "%"));
         }
-
         // 정렬
         query.orderBy(qBoard.no.desc());
 
-        // 페지잉 처리
+        // 페이징처리
         List<Board> list = getQuerydsl().applyPagination(pageable, query).fetch();
+
+
         return list;
     }
 }
