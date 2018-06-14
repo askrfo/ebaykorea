@@ -16,4 +16,6 @@ public interface MemberRepository
 
     @Query("select m from Member m join fetch m.memberRoles where m.id = :id")
     public Member getMember(@Param("id") Long id);
+
+    public Member getMemberByEmail(String email);
 }

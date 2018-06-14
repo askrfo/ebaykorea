@@ -40,4 +40,10 @@ public class MemberServiceImpl implements MemberService {
     public List<Member> getMembers() {
         return memberRepository.getMembers();
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Member getMemberByEmail(String email) {
+        return memberRepository.getMemberByEmail(email);
+    }
 }
