@@ -19,6 +19,8 @@ public class MemberServiceImpl implements MemberService {
     @Override
     @Transactional(readOnly = true)
     public Member getMember(Long id) {
+        if(id == 10L)
+            throw new RuntimeException("id == 10");
         return memberRepository.getMember(id);
     }
 
