@@ -5,11 +5,10 @@ import examples.boot.jpaboard.domain.Member;
 import examples.boot.jpaboard.service.BoardService;
 import examples.boot.jpaboard.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -21,6 +20,18 @@ public class BoardController {
     BoardService boardService;
     @Autowired
     MemberService memberService;
+
+    @GetMapping
+    public String list(
+            @RequestParam(name = "searchStr", required = false) String searchStr,
+            @RequestParam(name = "searchType", required = false) String searchType,
+            @RequestParam(name = "page", required = false, defaultValue = "1") int page,
+            ModelMap modelMap){
+        Page<Board> pageBoard =
+                boardService.getBoards(searchType, searchStr, page);
+        modelMap.addAttribute("pageBoard", pageBoard);
+        return "boards/list";
+    }
 
     @GetMapping(path = "/writeform")
     public String writeform(){

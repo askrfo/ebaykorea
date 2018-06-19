@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>list</title>
+    </head>
+    <body>
+    <h1>list</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th width="10%">id</th>
+            <th>제목</th>
+            <th width="15%">작성자</th>
+            <th width="15%">작성일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${not #lists.isEmpty(pageBoard)}"
+                th:each="board : ${pageBoard}">
+            <td th:text="${board.id}"></td>
+            <td th:text="${board.title}"></a> </td>
+            <td th:text="${board.member.name}"></td>
+            <td th:text="${#temporals.format(board.regdate, 'yyyy/MM/dd HH:mm')}"></td>
+        </tr>
+        </tbody>
+    </table>
+    </body>
+</html>
