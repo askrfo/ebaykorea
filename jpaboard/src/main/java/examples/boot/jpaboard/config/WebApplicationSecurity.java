@@ -42,6 +42,7 @@ public class WebApplicationSecurity
                     .antMatchers(HttpMethod.POST,
                             "/members/join").permitAll()
                     .antMatchers("/members/welcome").permitAll()
+                    .antMatchers("/members/login").permitAll()
                     .antMatchers("/members/**").hasRole("USER")
                     .antMatchers("/api/**").hasRole("USER")
                     .antMatchers("/h2-console/**").permitAll()
@@ -50,6 +51,10 @@ public class WebApplicationSecurity
                 .and()
                     .csrf().ignoringAntMatchers("/**")// post방식으로 값을 전달할 때 csrf를 무시
                 .and()
-                    .formLogin();
+                .formLogin()
+                    .loginProcessingUrl("/members/login")
+                    .loginPage("/members/login")
+                    .usernameParameter("id")
+                    .passwordParameter("password");
     }
 }
