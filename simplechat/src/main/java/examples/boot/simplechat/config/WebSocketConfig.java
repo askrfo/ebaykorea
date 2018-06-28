@@ -17,7 +17,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(socketHandler, "/ws")
-                .addInterceptors(new HttpSessionHandshakeInterceptor())
+                .addInterceptors(new HttpSessionHandshakeInterceptor()) // 웹소켓의 인증정보를 구한다.
                 .withSockJS();
     }
 }

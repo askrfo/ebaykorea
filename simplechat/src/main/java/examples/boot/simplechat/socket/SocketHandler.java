@@ -53,6 +53,8 @@ public class SocketHandler extends TextWebSocketHandler {
         sender.send(msg);
     }
 
+    // HttpSessionHandshakeInterceptor 이 WebSocket 설정으로
+    // 되어 있어야지만 접속한 사용자 정보를 읽어들일 수 있다.
     private String getUser(WebSocketSession session) {
         Map<String, Object> handshakeAttributes = session.getAttributes();
         SecurityContext context = (SecurityContext) handshakeAttributes
