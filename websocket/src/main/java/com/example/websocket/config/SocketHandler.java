@@ -45,6 +45,7 @@ public class SocketHandler extends TextWebSocketHandler {
         });
     }
 
+    // 클라이언트가 접속을 하면 클라이언트와 통신할 수 있는 WebSocketSession이 전달된다.
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         InetSocketAddress clientAddress = session.getRemoteAddress();
