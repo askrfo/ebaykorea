@@ -28,7 +28,7 @@ public class ApiController {
         return new ResponseEntity<Book>(book, HttpStatus.OK);
     }
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Book>> getBooks(){
         List<Book> list = new ArrayList<>();
         Book book1 = new Book(1L, "hello");

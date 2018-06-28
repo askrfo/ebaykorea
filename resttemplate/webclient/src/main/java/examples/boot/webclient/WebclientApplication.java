@@ -11,7 +11,8 @@ import examples.boot.webclient.dto.Book;
 
 import java.util.List;
 
-
+// CommandLineRunner 인터페이스를 구현하면 CLI 애플리케이션을 만든다.
+// run(String... args) 을 구현한다.
 @SpringBootApplication
 public class WebclientApplication implements CommandLineRunner {
 
@@ -28,6 +29,9 @@ public class WebclientApplication implements CommandLineRunner {
         return restTemplate;
     }
 
+    // 실질적인 프로그램 시작점.
+    // spring boot 애플리케이션에서는 main이라고 생각하면 편하다.
+    // 주입된 객체를 이용할 수 있다.
     @Override
     public void run(String... args) throws Exception {
         Book book = bookAdapter.getBook(1L);

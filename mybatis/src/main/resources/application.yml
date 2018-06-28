@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    username: sa
+    password: sa
+    initialization-mode: always
+    schema: import.sql
+  h2:
+    console:
+      enabled: true
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
