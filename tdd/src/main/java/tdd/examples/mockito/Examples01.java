@@ -10,7 +10,8 @@ import static org.mockito.Mockito.verify;
 public class Examples01 {
     public static void main(String[] args){
         // mock
-        List mockedList = mock(List.class);
+        List mockedList = Mockito.mock(List.class);// List를 구현하는 Mock객체를 반환
+        // mockedList레펀스가 참조하는 객체의 클래스 이름.
         System.out.println(mockedList.getClass().getName());
 
         // mock 사용하기
@@ -18,7 +19,7 @@ public class Examples01 {
         mockedList.clear();
 
         // verification
-        verify(mockedList).add("one");
-        verify(mockedList).clear();
+        Mockito.verify(mockedList).add("two");
+        Mockito.verify(mockedList).clear();
     }
 }

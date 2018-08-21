@@ -13,7 +13,7 @@ import java.util.List;
 
 /*
 이때까지의 예제에서는 stub 할 때 모두 특정값을 넣었다.
-만약 mock의 상태나 메소드 인자값에 따라 다른 값을 돌려주게 하게 만들고 싶다면 어떻게 해야할까.
+만약 mock의 상태나 메소드 인자값에 따라 다른 값 을 돌려주게 하게 만들고 싶다면 어떻게 해야할까.
 Answer<?> 클래스를 사용하면 가능하다.
  */
 @RunWith(MockitoJUnitRunner.class)

@@ -18,6 +18,7 @@ public class Examples07 {
     // @Mock 이 붙은 필드를 모두 Mock객체로 초기화한다.
     @Before
     public void initMocks() {
+
         MockitoAnnotations.initMocks(this); // mock all the field having @Mock annotation
     }
 

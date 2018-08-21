@@ -9,6 +9,5 @@
     </typeAliases>
     <mappers>
         <mapper resource="examples/boot/mybatis/mapper/CityMapper.xml"/>
-        <mapper resource="examples/boot/mybatis/mapper/HotelMapper.xml"/>
     </mappers>
 </configuration>

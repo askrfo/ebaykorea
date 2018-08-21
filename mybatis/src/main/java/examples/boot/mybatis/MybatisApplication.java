@@ -24,7 +24,9 @@ public class MybatisApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        System.out.println("---------------------");
         System.out.println(this.cityDao.selectCityById(1));
         System.out.println(hotelMapper.selectByCityId(1));
+        System.out.println("---------------------");
     }
 }
