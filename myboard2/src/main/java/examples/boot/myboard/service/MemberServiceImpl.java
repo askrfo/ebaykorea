@@ -41,6 +41,6 @@ public class MemberServiceImpl implements MemberService {
     @Override
     @Transactional(readOnly = true)
     public Member getMember(String email) {
-        return null;
+        return memberRepository.findByEmail(email);
     }
 }

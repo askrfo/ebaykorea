@@ -4,6 +4,8 @@ import examples.boot.myboard.domain.Board;
 import examples.boot.myboard.repository.BoardRepository;
 import examples.boot.myboard.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +27,10 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Board> getBoards(int page) {
-        return null;
+    public Page<Board> getBoards(int page) {
+        // 0페이지가 시작 페이지, 3건씩 보여준다.
+        PageRequest pageRequest = PageRequest.of(page - 1, 3);
+        Page<Board> boardPage = boardRepository.findAllByOrderByIdDesc(pageRequest);
+        return boardPage;
     }
 }
