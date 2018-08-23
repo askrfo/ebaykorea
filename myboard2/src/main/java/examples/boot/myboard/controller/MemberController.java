@@ -34,4 +34,9 @@ public class MemberController {
     public String welcome(){
         return "welcome";
     }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
 }
