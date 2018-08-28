@@ -229,4 +229,5 @@ BoardServiceImpl과 BoardService를 알맞게 수정한다.
 
 숙제 : 1) 프로젝트 주제를 정한다.
       2) 프로젝트 주제에 대한 간단한 설명을 작성한다.
-      3) 프로젝트에 필요한 엔티티 클래스를 작성한다. (가능하다면 Repository와 Service까지 작성)s
+      3) 프로젝트에 필요한 엔티티 클래스를 작성한다. (가능하다면 Repository와 Service까지 작성)
+
