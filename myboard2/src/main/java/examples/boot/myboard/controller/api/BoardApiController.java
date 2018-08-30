@@ -20,12 +20,12 @@ public class BoardApiController {
 
     @GetMapping
     ResponseEntity<Page<Board>> boards(
-            @RequestParam(name = "page", required = false, defaultValue = "1") int page,
-            ModelMap modelMap){
+            @RequestParam(name = "page",
+                    required = false,
+                    defaultValue = "1") int page){
         if(1 == 1)
             throw new RuntimeException("exception!!!!");
         Page<Board>boardPage  = boardService.getBoards(page);
-        modelMap.addAttribute("list", boardPage);
 
         return new ResponseEntity<>(boardPage, HttpStatus.OK);
     }

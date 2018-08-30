@@ -12,9 +12,11 @@ public class GlobalRestControllerExceptionHandler {
     @ExceptionHandler(value = { Exception.class })
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
-    protected ApiError handleConflict(RuntimeException e, WebRequest request) {
+    protected ApiError handleConflict(RuntimeException e,
+                                      WebRequest request) {
         ApiError apiError =
-                new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, e.getLocalizedMessage());
+                new ApiError(HttpStatus.INTERNAL_SERVER_ERROR,
+                        e.getLocalizedMessage());
         return apiError;
     }
 
