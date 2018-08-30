@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+// 서비스의 메소드가 실행될 때마다 메소드의 이름을 출력하시오.
 @Service
 public class MemberServiceImpl implements MemberService{
     @Override

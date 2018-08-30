@@ -18,6 +18,7 @@ public class MemberController {
 
     @GetMapping
     public List<Member> getMembers(){
+        System.out.println(memberService.getClass().getName());
         return memberService.getMembers();
     }
 
