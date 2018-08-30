@@ -1,5 +1,6 @@
 package examples.boot.myboard.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,9 +20,11 @@ public class Member {
     private Long id;
     private String name;
     private String email;
+    @JsonIgnore
     private String passwd;
     private LocalDateTime regdate;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<MemberRole> memberRoles = new HashSet<>();
 

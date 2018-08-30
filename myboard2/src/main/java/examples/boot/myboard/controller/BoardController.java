@@ -29,6 +29,8 @@ public class BoardController {
        @RequestParam(name = "page", required = false, defaultValue = "1") int page,
        ModelMap modelMap){
 
+        if(1 == 1)
+            throw new IllegalArgumentException("exception!!!!!");
         // 읽어들인 값을 view에게 전송하기 위해 modelMap에 값을 담는다.
         Page<Board> boardPage = boardService.getBoards(page);
         modelMap.addAttribute("list", boardPage);
