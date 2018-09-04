@@ -12,3 +12,15 @@ spring:
   h2:
     console:
       enabled: true
+name: kim
+---
+spring:
+    profiles: dev
+name : lee
+
+---
+spring:
+    profiles: real
+name : kang
+
+
