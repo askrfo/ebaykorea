@@ -12,7 +12,23 @@ spring:
   h2:
     console:
       enabled: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
 name: kim
+logging:
+  path: logs
+  level:
+    spring:
+      springframework: info
+    examples:
+      boot:
+        myboard: DEBUG
+
+
+serverinfo:
+  address: localhost
+  port: 0000
 ---
 spring:
     profiles: dev

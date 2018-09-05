@@ -8,4 +8,5 @@ import java.util.List;
 public interface BoardService {
     public Board addBoard(Long memberId, Board board);
     public Page<Board> getBoards(int page);
+    public Board getBoard(Long id);
 }

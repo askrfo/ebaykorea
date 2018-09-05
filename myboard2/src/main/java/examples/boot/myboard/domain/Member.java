@@ -1,6 +1,7 @@
 package examples.boot.myboard.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ import java.util.Set;
 @Table(name = "member")
 @Getter
 @Setter
+@JsonIgnoreProperties(value={"hibernateLazyInitializer", "handler"})
 public class Member {
 
     @Id

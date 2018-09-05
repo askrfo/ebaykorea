@@ -33,4 +33,9 @@ public class BoardServiceImpl implements BoardService {
         Page<Board> boardPage = boardRepository.findAllByOrderByIdDesc(pageRequest);
         return boardPage;
     }
+
+    @Override
+    public Board getBoard(Long id) {
+        return boardRepository.getOne(id);
+    }
 }
