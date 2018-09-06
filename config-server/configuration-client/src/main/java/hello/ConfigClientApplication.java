@@ -19,11 +19,14 @@ public class ConfigClientApplication {
 @RestController
 class MessageRestController {
 
-    @Value("${message:Hello default}")
-    private String message;
+    @Value("${apiserver.address}")
+    private String address;
 
-    @RequestMapping("/message")
+    @Value("${apiserver.port}")
+    private String port;
+
+    @RequestMapping("/server")
     String getMessage() {
-        return this.message;
+        return this.address + " : " + this.port;
     }
 }
